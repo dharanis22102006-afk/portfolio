@@ -3,30 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Dharani S | Portfolio</title>
 
-  <!-- ✅ SEO Meta Tags -->
+  <!-- ✅ SEO -->
   <meta name="description" content="Portfolio of Dharani S, a web developer and CSE student at KSR College of Engineering. Passionate about web development and building creative digital experiences.">
-  <meta name="keywords" content="Dharani S, Portfolio, Web Developer, Frontend, HTML, CSS, JavaScript, KSR College, Projects, Developer Portfolio">
+  <meta name="keywords" content="Dharani S, Portfolio, Web Developer, Frontend, HTML, CSS, JavaScript, Projects">
   <meta name="author" content="Dharani S">
 
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- ✅ Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #f9f9f9;
       color: #222;
       margin: 0;
       display: flex;
+      transition: background 0.3s, color 0.3s;
     }
 
     /* Sidebar */
     nav {
       width: 240px;
-      background-color: #ffffff;
+      background-color: #fff;
       height: 100vh;
       position: fixed;
       top: 0;
@@ -73,6 +76,7 @@
       color: #fff;
     }
 
+    /* Main Content */
     main {
       margin-left: 240px;
       padding: 40px;
@@ -132,7 +136,7 @@
     }
     .btn:hover { background-color: #005f63; }
 
-    /* Contact Form */
+    /* Contact */
     form { max-width: 400px; margin-top: 20px; }
     label { display: block; margin: 10px 0 5px; }
     input, textarea {
@@ -144,26 +148,6 @@
       color: #333;
       font-size: 15px;
     }
-
-    .input-group { position: relative; margin-bottom: 15px; }
-    .clear-btn {
-      position: absolute;
-      right: 10px;
-      top: 35px;
-      color: #888;
-      font-size: 18px;
-      cursor: pointer;
-      display: none;
-    }
-
-    .clear-btn:hover { color: #007b83; }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #007b83;
-      box-shadow: 0 0 4px rgba(0, 123, 131, 0.3);
-    }
-    input:not(:placeholder-shown) + .clear-btn,
-    textarea:not(:placeholder-shown) + .clear-btn { display: inline; }
 
     button {
       background-color: #007b83;
@@ -179,7 +163,7 @@
 
     footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 40px; }
 
-    /* Back to Top Button */
+    /* Back to Top */
     #backToTop {
       position: fixed;
       bottom: 30px;
@@ -198,6 +182,34 @@
     }
     #backToTop:hover { background-color: #005f63; transform: translateY(-3px); }
 
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+    }
+    .dark-mode nav { background-color: #111; border-color: #333; }
+    .dark-mode a { color: #ddd; }
+    .dark-mode .btn { background-color: #00b4b4; }
+    .dark-mode .project-card { background-color: #222; border-color: #333; }
+
+    /* Toggle Button */
+    #themeToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #007b83;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s;
+      z-index: 200;
+    }
+    #themeToggle:hover { background-color: #005f63; }
+
     /* Responsive */
     @media (max-width: 768px) {
       body { flex-direction: column; }
@@ -214,6 +226,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Sidebar -->
@@ -228,16 +241,19 @@
     </ul>
   </nav>
 
+  <!-- Theme Toggle -->
+  <button id="themeToggle">🌙</button>
+
   <!-- Main Content -->
   <main>
     <section id="home">
-      <h2>Welcome</h2>
-      <p>Hi, I’m <strong>Dharani S</strong>, a passionate and motivated second-year Computer Science and Engineering student at KSR College of Engineering. I have a strong interest in web development and love creating clean, interactive, and user-friendly websites.</p>
+      <h2>Hi, I’m <span class="typing"></span></h2>
+      <p>I’m <strong>Dharani S</strong>, a passionate Computer Science and Engineering student at KSR College of Engineering. I love crafting interactive, modern, and responsive websites using HTML, CSS, and JavaScript.</p>
     </section>
 
     <section id="about">
       <h2>About Me</h2>
-      <p>I’m constantly exploring new technologies like JavaScript, React, and Tailwind CSS to enhance my skills and bring creative ideas to life. Along with frontend development, I’m also learning about backend technologies and database management to become a full-stack developer.</p>
+      <p>I’m currently learning modern frontend technologies like JavaScript, React, and Tailwind CSS. I aim to become a full-stack developer capable of building complete web applications from scratch.</p>
       <h3>Skills</h3>
       <ul class="skills">
         <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li>
@@ -247,43 +263,44 @@
     <section id="projects">
       <h2>Projects</h2>
       <div class="project-container">
+
         <div class="project-card">
           <h3>Portfolio Website</h3>
-          <p>My personal portfolio website built with HTML, CSS, and JavaScript.</p>
-          <a href="#" class="btn">View</a>
+          <p>A personal portfolio website built using HTML, CSS, and JavaScript — showcasing my skills, projects, and contact information.</p>
+          <a href="https://dharanis22102006-afk.github.io/portfolio/" target="_blank" class="btn">🔗 View Live</a>
         </div>
+
         <div class="project-card">
-          <h3>Vintage Store</h3>
-          <p>Vintage Store is an online marketplace that celebrates the charm of the past through a curated collection of timeless products.</p>
-          <a href="#https://dharanis22102006-afk.github.io/E-commerce-website/" class="btn">View</a>
+          <h3>E-Commerce Website</h3>
+          <p>An elegant and responsive e-commerce website that provides a seamless online shopping experience with product listings and modern design.</p>
+          <a href="https://dharanis22102006-afk.github.io/E-commerce-website/" target="_blank" class="btn">🔗 View Live</a>
         </div>
+
       </div>
     </section>
 
     <section id="contact">
       <h2>Contact Me</h2>
-      <p>Feel free to reach out via email or through my profiles below:</p>
+      <p>Let’s connect! Reach me on LinkedIn or send a message below 👇</p>
       <p>
         💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dharani-s-28490b333" target="_blank" style="color:#007b83;">linkedin.com/in/dharani-s</a><br>
         💻 <strong>GitHub:</strong> <a href="https://github.com/dharanis22102006-afk" target="_blank" style="color:#007b83;">github.com/dharanis22102006-afk</a>
       </p>
 
       <form id="contactForm">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="from_name" placeholder="Your name" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="from_name" placeholder="Your name" required>
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="from_email" placeholder="you@example.com" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="from_email" placeholder="you@example.com" required>
 
-  <label for="message">Message:</label>
-  <textarea id="message" name="message" rows="4" placeholder="Your message..." required></textarea>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Your message..." required></textarea>
 
-  <!-- Hidden field to include time automatically -->
-  <input type="hidden" name="time" id="time">
+        <input type="hidden" name="time" id="time">
 
-  <button type="submit">Send Message</button>
-</form>
-
+        <button type="submit">Send Message</button>
+      </form>
     </section>
 
     <footer>
@@ -291,11 +308,24 @@
     </footer>
   </main>
 
-  <!-- Back to Top Button -->
+  <!-- Back to Top -->
   <button id="backToTop">↑</button>
 
+  <!-- ✅ JS Libraries -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+
   <script>
-    // Highlight active nav link
+    // Typing Animation
+    var typed = new Typed(".typing", {
+      strings: ["Dharani S", "a Web Developer", "a CSE Student", "a Tech Enthusiast"],
+      typeSpeed: 80,
+      backSpeed: 40,
+      loop: true
+    });
+
+    // Active Nav Highlight
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll("nav a");
     window.addEventListener("scroll", () => {
@@ -310,36 +340,47 @@
       });
     });
 
-    // Back to Top Button
+    // Back to Top
     const backToTop = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
       backToTop.style.display = window.scrollY > 300 ? "block" : "none";
     });
     backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-    // Clear input fields
-    function clearField(id) { document.getElementById(id).value = ""; }
+    // Dark Mode Toggle
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    });
+
+    // Scroll Reveal Animation
+    ScrollReveal().reveal('section', { 
+      delay: 200,
+      distance: '50px',
+      duration: 800,
+      easing: 'ease-in-out',
+      origin: 'bottom'
+    });
+
+    // EmailJS Form
+    (function() {
+      emailjs.init("Ig6WH0_aJOHXCjXos");
+    })();
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("time").value = new Date().toLocaleString();
+
+      emailjs.sendForm("service_k6xz1oo", "template_86jeymp", this)
+        .then(() => {
+          alert("✅ Message sent successfully!");
+          this.reset();
+        }, (error) => {
+          alert("❌ Failed to send message: " + JSON.stringify(error));
+        });
+    });
   </script>
- <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function() {
-    emailjs.init("Ig6WH0_aJOHXCjXos"); // e.g. "F1aBcD_2xYz3wK9Tu"
-  })();
-
-  document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    document.getElementById("time").value = new Date().toLocaleString();
-
-    emailjs.sendForm("service_k6xz1oo", "template_86jeymp", this)
-      .then(() => {
-        alert("✅ Message sent successfully!");
-        this.reset();
-      }, (error) => {
-        alert("❌ Failed to send message: " + JSON.stringify(error));
-      });
-  });
-</script>
-
 
 </body>
 </html>
