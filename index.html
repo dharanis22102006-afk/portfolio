@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Dharani S, a web developer and CSE student at KSR College of Engineering. Passionate about web development and building creative digital experiences.">
+  <meta name="keywords" content="Dharani S, Portfolio, Web Developer, Frontend, HTML, CSS, JavaScript, KSR College, Projects, Developer Portfolio">
+  <meta name="author" content="Dharani S">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      margin: 0;
+      display: flex;
+    }
+
+    /* Sidebar */
+    nav {
+      width: 240px;
+      background-color: #ffffff;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 30px;
+      border-right: 1px solid #ddd;
+      z-index: 10;
+    }
+
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 2px solid #007b83;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    nav h1 {
+      font-size: 1.4em;
+      color: #007b83;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    nav ul { list-style: none; padding: 0; margin: 0; width: 100%; }
+    nav li { width: 100%; }
+
+    nav a {
+      display: block;
+      padding: 14px;
+      color: #333;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: #007b83;
+      color: #fff;
+    }
+
+    main {
+      margin-left: 240px;
+      padding: 40px;
+      width: calc(100% - 240px);
+    }
+
+    section { padding: 60px 0; border-bottom: 1px solid #ddd; }
+    h2 { color: #007b83; margin-bottom: 10px; }
+    p { color: #444; max-width: 700px; }
+
+    /* Skills */
+    .skills { list-style: none; padding: 0; }
+    .skills li {
+      display: inline-block;
+      margin: 8px;
+      background-color: #e7f5f6;
+      color: #007b83;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    /* Projects */
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background-color: #ffffff;
+      width: 280px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .project-card h3 { margin-top: 0; color: #007b83; }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background-color: #007b83;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn:hover { background-color: #005f63; }
+
+    /* Contact Form */
+    form { max-width: 400px; margin-top: 20px; }
+    label { display: block; margin: 10px 0 5px; }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      color: #333;
+      font-size: 15px;
+    }
+
+    .input-group { position: relative; margin-bottom: 15px; }
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 35px;
+      color: #888;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .clear-btn:hover { color: #007b83; }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #007b83;
+      box-shadow: 0 0 4px rgba(0, 123, 131, 0.3);
+    }
+    input:not(:placeholder-shown) + .clear-btn,
+    textarea:not(:placeholder-shown) + .clear-btn { display: inline; }
+
+    button {
+      background-color: #007b83;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #005f63; }
+
+    footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 40px; }
+
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #007b83;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      display: none;
+      font-size: 20px;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 100;
+    }
+    #backToTop:hover { background-color: #005f63; transform: translateY(-3px); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      nav {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        position: static;
+        border-bottom: 1px solid #ddd;
+      }
+      main { margin-left: 0; width: 100%; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <img src="DHARANI IMAGE.jpg" alt="Profile" class="profile-pic" />
+    <h1>DHARANI S</h1>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <section id="home">
+      <h2>Welcome</h2>
+      <p>Hi, I’m <strong>Dharani S</strong>, a passionate and motivated second-year Computer Science and Engineering student at KSR College of Engineering. I have a strong interest in web development and love creating clean, interactive, and user-friendly websites.</p>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m constantly exploring new technologies like JavaScript, React, and Tailwind CSS to enhance my skills and bring creative ideas to life. Along with frontend development, I’m also learning about backend technologies and database management to become a full-stack developer.</p>
+      <h3>Skills</h3>
+      <ul class="skills">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-container">
+        <div class="project-card">
+          <h3>Portfolio Website</h3>
+          <p>My personal portfolio website built with HTML, CSS, and JavaScript.</p>
+          <a href="#" class="btn">View</a>
+        </div>
+        <div class="project-card">
+          <h3>Vintage Store</h3>
+          <p>Vintage Store is an online marketplace that celebrates the charm of the past through a curated collection of timeless products.</p>
+          <a href="#https://dharanis22102006-afk.github.io/E-commerce-website/" class="btn">View</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out via email or through my profiles below:</p>
+      <p>
+        💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dharani-s-28490b333" target="_blank" style="color:#007b83;">linkedin.com/in/dharani-s</a><br>
+        💻 <strong>GitHub:</strong> <a href="https://github.com/dharanis22102006-afk" target="_blank" style="color:#007b83;">github.com/dharanis22102006-afk</a>
+      </p>
+
+      <form id="contactForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="from_name" placeholder="Your name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="from_email" placeholder="you@example.com" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" rows="4" placeholder="Your message..." required></textarea>
+
+  <!-- Hidden field to include time automatically -->
+  <input type="hidden" name="time" id="time">
+
+  <button type="submit">Send Message</button>
+</form>
+
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Dharani S. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">↑</button>
+
+  <script>
+    // Highlight active nav link
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) current = section.getAttribute("id");
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) link.classList.add("active");
+      });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // Clear input fields
+    function clearField(id) { document.getElementById(id).value = ""; }
+  </script>
+ <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("Ig6WH0_aJOHXCjXos"); // e.g. "F1aBcD_2xYz3wK9Tu"
+  })();
+
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("time").value = new Date().toLocaleString();
+
+    emailjs.sendForm("service_k6xz1oo", "template_86jeymp", this)
+      .then(() => {
+        alert("✅ Message sent successfully!");
+        this.reset();
+      }, (error) => {
+        alert("❌ Failed to send message: " + JSON.stringify(error));
+      });
+  });
+</script>
+
+
+</body>
+</html>
