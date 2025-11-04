@@ -250,8 +250,21 @@
       <h2>Hi, I’m <span class="typing"></span></h2>
       <p>I’m <strong>Dharani S</strong>, a passionate Computer Science and Engineering student at KSR College of Engineering. I love crafting interactive, modern, and responsive websites using HTML, CSS, and JavaScript.</p>
     </section>
+    <!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Hi, I’m <span class="highlight">Dharani S</span></h1>
+    <h2 class="typing-text">Frontend Developer & Designer</h2>
+    <centre>
+    <p>I craft beautiful, responsive, and user-friendly web experiences using HTML, CSS, JavaScript, and React.</p>
+    </centre>
+    <a href="#projects" class="btn">View My Work</a>
+  </div>
+  
+</section>
 
-    <section id="about">
+
+    <section id="about" class="fade-in">
       <h2>About Me</h2>
       <p>I’m currently learning modern frontend technologies like JavaScript, React, and Tailwind CSS. I aim to become a full-stack developer capable of building complete web applications from scratch.</p>
       <h3>Skills</h3>
@@ -264,16 +277,16 @@
       <h2>Projects</h2>
       <div class="project-container">
 
-        <div class="project-card">
+        <div class="project-card slide in">
           <h3>Portfolio Website</h3>
           <p>A personal portfolio website built using HTML, CSS, and JavaScript — showcasing my skills, projects, and contact information.</p>
-          <a href="https://dharanis22102006-afk.github.io/portfolio/" target="_blank" class="btn">🔗 View Live</a>
+          <a href="https://github.com/dharanis22102006-afk/portfolio.git" target="_blank" class="btn">🔗 View Live</a>
         </div>
 
         <div class="project-card">
           <h3>E-Commerce Website</h3>
           <p>An elegant and responsive e-commerce website that provides a seamless online shopping experience with product listings and modern design.</p>
-          <a href="https://dharanis22102006-afk.github.io/E-commerce-website/" target="_blank" class="btn">🔗 View Live</a>
+          <a href="https://github.com/dharanis22102006-afk/E-commerce-website.git" target="_blank" class="btn">🔗 View Live</a>
         </div>
 
       </div>
@@ -382,6 +395,18 @@
     });
   </script>
 <script src="app.js"></script>
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  // Apply animation to sections and project cards
+  document.querySelectorAll('.fade-in, .slide-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
